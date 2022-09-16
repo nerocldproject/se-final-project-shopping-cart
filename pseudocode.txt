@@ -1,0 +1,25 @@
+PROGRAM ShoppingCart
+
+READ AND WRITE "list_shopping_cart" WITH array
+READ AND WRITE "assign_item_to_shopping_list" WITH TRUE
+READ AND WRITE "total_jumlah_barang" WITH integer
+READ AND WRITE "total_harga_barang" WITH integer
+g
+WHILE "assign_item_to_shopping_list"
+    DO
+    READ AND WRITE "item" WITH array
+    READ AND WRITE "nama_barang" WITH string
+    READ AND WRITE "harga_barang" WITH integer
+    READ AND WRITE "jumlah_barang" WITH integer
+    INPUT "nama_barang"
+    INPUT "harga_barang"
+    INPUT "jumlah_barang"
+    ADD "item" by "nama_barang"
+    ADD "item" by "harga_barang"
+    ADD "item" by "jumlah_barang"
+    ADD "list_shopping_cart" by "item"
+
+FOR "i" in "assign_item_to_shopping_list"
+    STORE "total_jumlah_barang" WITH CALCULATE "total_jumlah_barang" add by "i[3]"
+    STORE "total_harga_barang" WITH CALCULATE "total_harga_barang" add by CALCULATE "i[2]" multiply by "i[3]" 
+
