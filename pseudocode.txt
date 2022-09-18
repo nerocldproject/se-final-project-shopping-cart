@@ -1,0 +1,31 @@
+PROGRAM ShoppingCart
+
+READ AND WRITE "list_shopping_cart" WITH array
+READ AND WRITE "assign_item_to_shopping_list" WITH TRUE
+READ AND WRITE "total_jumlah_barang" WITH integer
+READ AND WRITE "total_harga_barang" WITH integer
+
+WHILE "assign_item_to_shopping_list"
+    DO
+    READ AND WRITE "item" WITH array
+    READ AND WRITE "nama_barang" WITH string
+    READ AND WRITE "harga_barang" WITH integer
+    READ AND WRITE "jumlah_barang" WITH integer
+    READ AND WRITE "still_add_item" WITH boolean
+    INPUT "nama_barang"
+    INPUT "harga_barang"
+    INPUT "jumlah_barang"
+    INPUT "still_add_item"
+    ADD "item" by "nama_barang"
+    ADD "item" by "harga_barang"
+    ADD "item" by "jumlah_barang"
+    ADD "list_shopping_cart" by "item"
+    IF "still_add_item" is FALSE
+        STORE "assign_item_to_shopping_list" by FALSE
+
+FOR "i" in "assign_item_to_shopping_list"
+    STORE "total_jumlah_barang" WITH CALCULATE "total_jumlah_barang" add by "i[3]" #diasumsikan data pertama dimulai dari digit 1
+    STORE "total_harga_barang" WITH CALCULATE "total_harga_barang" add by CALCULATE "i[2]" multiply by "i[3]" 
+
+PRINTLINE "total jumlah barang yang akan di checkout: " + "total_jumlah_barang"
+PRINTLINE "total harga barang yang harus dibayar: " + "total_harga_barang"
